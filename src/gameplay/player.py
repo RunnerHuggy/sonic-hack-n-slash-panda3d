@@ -3,21 +3,34 @@ from direct.showbase.ShowBaseGlobal import globalClock
 class Player:
     def __init__(self, base, anim_path: dict):
         self.base = base
+        self.x_pos = 0.0
 
         # Load the idle animation.
-        self.idle_anim = base.loader.loadModel(str(anim_path["idle_right"]))
-        self.idle_anim.reparentTo(base.render)
-        self.idle_anim.setPos(0, 0, 0.75)
-        self.idle_seq = self._get_sequence_node(self.idle_anim)
+        # Right
+        self.idle_anim_right = base.loader.loadModel(str(anim_path["idle_right"]))
+        self.idle_anim_right.reparentTo(base.render)
+        self.idle_anim_right.setPos(0, 0, 0.75)
+        self.idle_seq_right = self._get_sequence_node(self.idle_anim_right)
 
-        # Load the run animation.
-        self.run_anim = base.loader.loadModel(str(anim_path["run_right"]))
-        self.run_anim.reparentTo(base.render)
-        self.run_anim.setPos(0, 0, 0.75)
-        self.run_seq = self._get_sequence_node(self.run_anim)
+        # Left
+        self.idle_anim_left = base.loader.loadModel(str(anim_path["idle_left"]))
+        self.idle_anim_left.reparentTo(base.render)
+        self.idle_anim_left.setPos(0, 0, 0.75)
+        self.idle_seq_left = self._get_sequence_node(self.idle_anim_left)
 
-        self.idle_anim_show()
-        self.run_anim_hide()
+        # Right
+        self.run_anim_right = base.loader.loadModel(str(anim_path["run_right"]))
+        self.run_anim_right.reparentTo(base.render)
+        self.run_anim_right.setPos(0, 0, 0.75)
+        self.run_seq_right = self._get_sequence_node(self.run_anim_right)
+
+        # Left
+        self.run_anim_left = base.loader.loadModel(str(anim_path["run_left"]))
+        self.run_anim_left.reparentTo(base.render)
+        self.run_anim_left.setPos(0, 0, 0.75)
+        self.run_seq_left = self._get_sequence_node(self.run_anim_left)
+
+        self.idle_anim_right_show()
 
         self.is_moving = False
         self.facing = "right"
@@ -54,33 +67,50 @@ class Player:
     def _set_key(self, key, value):
         self.keys[key] = value
 
-    # Facing
-    def face_right(self):
-        self.idle_anim.setH(0)
-        self.run_anim.setH(0)
-        self.facing = "right"
-
-    def face_left(self):
-        self.idle_anim.setH(180)
-        self.run_anim.setH(180)
-        self.facing = "left"
-
     # Animations
-    def idle_anim_show(self):
-        self.idle_anim.show()
-        self.idle_seq.loop(True)
+    def idle_anim_right_show(self):
+        self.idle_anim_right.show()
+        self.idle_anim_left.hide()
+        self.run_anim_right.hide()
+        self.run_anim_left.hide()
 
-    def idle_anim_hide(self):
-        self.idle_anim.hide()
-        self.idle_seq.stop()
+        self.idle_seq_right.loop(True)
+        self.idle_seq_left.stop()
+        self.run_seq_right.stop()
+        self.run_seq_left.stop()
 
-    def run_anim_show(self):
-        self.run_anim.show()
-        self.run_seq.loop(True)
+    def idle_anim_left_show(self):
+        self.idle_anim_right.hide()
+        self.idle_anim_left.show()
+        self.run_anim_right.hide()
+        self.run_anim_left.hide()
 
-    def run_anim_hide(self):
-        self.run_anim.hide()
-        self.run_seq.stop()
+        self.idle_seq_right.stop()
+        self.idle_seq_left.loop(True)
+        self.run_seq_right.stop()
+        self.run_seq_left.stop()
+
+    def run_anim_right_show(self):
+        self.idle_anim_right.hide()
+        self.idle_anim_left.hide()
+        self.run_anim_right.show()
+        self.run_anim_left.hide()
+
+        self.idle_seq_right.stop()
+        self.idle_seq_left.stop()
+        self.run_seq_right.loop(True)
+        self.run_seq_left.stop()
+
+    def run_anim_left_show(self):
+        self.idle_anim_right.hide()
+        self.idle_anim_left.hide()
+        self.run_anim_right.hide()
+        self.run_anim_left.show()
+
+        self.idle_seq_right.stop()
+        self.idle_seq_left.stop()
+        self.run_seq_right.stop()
+        self.run_seq_left.loop(True)
 
     def update(self, task):
         dt = globalClock.getDt()
@@ -88,23 +118,28 @@ class Player:
         moving = self.keys["left"] or self.keys["right"]
 
         if self.keys["left"]:
-            self.idle_anim.setX(self.idle_anim.getX() - self.speed * dt)
-            self.run_anim.setX(self.run_anim.getX() - self.speed * dt)
-            if self.facing != "left":
-                self.face_left()
+            self.x_pos -= self.speed * dt
+            self.facing = "left"
         elif self.keys["right"]:
-            self.idle_anim.setX(self.idle_anim.getX() + self.speed * dt)
-            self.run_anim.setX(self.run_anim.getX() + self.speed * dt)
-            if self.facing != "right":
-                self.face_right()
+            self.x_pos += self.speed * dt
+            self.facing = "right"
+
+        # Apply the single shared position to all four models
+        for model in (self.idle_anim_right, self.idle_anim_left,
+                      self.run_anim_right, self.run_anim_left):
+            model.setX(self.x_pos)
 
         if moving and not self.is_moving:
-            self.idle_anim_hide()
-            self.run_anim_show()
+            if self.facing == "left":
+                self.run_anim_left_show()
+            else:
+                self.run_anim_right_show()
             self.is_moving = True
         elif not moving and self.is_moving:
-            self.idle_anim_show()
-            self.run_anim_hide()
+            if self.facing == "left":
+                self.idle_anim_left_show()
+            else:
+                self.idle_anim_right_show()
             self.is_moving = False
 
         return task.cont

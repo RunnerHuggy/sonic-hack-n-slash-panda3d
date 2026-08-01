@@ -1,0 +1,105 @@
+<Comment> {
+  "egg-texture-cards -o sonic_idle.egg -fps 10 idle_000.png idle_001.png idle_002.png idle_003.png idle_004.png idle_005.png idle_006.png idle_007.png"
+}
+<Texture> idle_007 {
+  idle_007.png
+}
+<Texture> idle_006 {
+  idle_006.png
+}
+<Texture> idle_005 {
+  idle_005.png
+}
+<Texture> idle_004 {
+  idle_004.png
+}
+<Texture> idle_003 {
+  idle_003.png
+}
+<Texture> idle_002 {
+  idle_002.png
+}
+<Texture> idle_001 {
+  idle_001.png
+}
+<Texture> idle_000 {
+  idle_000.png
+}
+<Group> {
+  <Switch> { 1 }
+  <Scalar> fps { 10 }
+  <VertexPool> vpool {
+    <Vertex> 0 {
+      -0.5 0.5 0
+      <UV> { 0 1 }
+    }
+    <Vertex> 1 {
+      -0.5 -0.5 0
+      <UV> { 0 0 }
+    }
+    <Vertex> 2 {
+      0.5 -0.5 0
+      <UV> { 1 0 }
+    }
+    <Vertex> 3 {
+      0.5 0.5 0
+      <UV> { 1 1 }
+    }
+  }
+  <Group> idle_000 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { idle_000 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> idle_001 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { idle_001 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> idle_002 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { idle_002 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> idle_003 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { idle_003 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> idle_004 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { idle_004 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> idle_005 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { idle_005 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> idle_006 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { idle_006 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> idle_007 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { idle_007 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+}
