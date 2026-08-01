@@ -1,6 +1,15 @@
-# Symplifying the initializing
+# Simplifying the initializing
 from src.game import SonicHackNSlashPanda3D
 
+
 if __name__ == "__main__":
-    game : SonicHackNSlashPanda3D = SonicHackNSlashPanda3D("src/assets/3d-objects/floor.glb")
+    game : SonicHackNSlashPanda3D = SonicHackNSlashPanda3D(
+        "src/assets/3d-objects/floor.glb",
+        {
+            "idle_right": "src/assets/sprites/sonic/idle/right/sonic_idle.egg",
+            "run_right": "src/assets/sprites/sonic/run/right/sonic_run.egg",
+            "idle_left": "src/assets/sprites/sonic/idle/left/sonic_idle.egg",
+            "run_left": "src/assets/sprites/sonic/run/left/sonic_run.egg"
+        }
+    )
     game.run()

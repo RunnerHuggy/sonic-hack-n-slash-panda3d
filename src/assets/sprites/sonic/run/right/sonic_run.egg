@@ -1,0 +1,105 @@
+<Comment> {
+  "egg-texture-cards -o sonic_run.egg -fps 10 run_000.png run_001.png run_002.png run_003.png run_004.png run_005.png run_006.png run_007.png"
+}
+<Texture> run_007 {
+  run_007.png
+}
+<Texture> run_006 {
+  run_006.png
+}
+<Texture> run_005 {
+  run_005.png
+}
+<Texture> run_004 {
+  run_004.png
+}
+<Texture> run_003 {
+  run_003.png
+}
+<Texture> run_002 {
+  run_002.png
+}
+<Texture> run_001 {
+  run_001.png
+}
+<Texture> run_000 {
+  run_000.png
+}
+<Group> {
+  <Switch> { 1 }
+  <Scalar> fps { 10 }
+  <VertexPool> vpool {
+    <Vertex> 0 {
+      -0.5 0.5 0
+      <UV> { 0 1 }
+    }
+    <Vertex> 1 {
+      -0.5 -0.5 0
+      <UV> { 0 0 }
+    }
+    <Vertex> 2 {
+      0.5 -0.5 0
+      <UV> { 1 0 }
+    }
+    <Vertex> 3 {
+      0.5 0.5 0
+      <UV> { 1 1 }
+    }
+  }
+  <Group> run_000 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { run_000 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> run_001 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { run_001 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> run_002 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { run_002 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> run_003 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { run_003 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> run_004 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { run_004 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> run_005 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { run_005 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> run_006 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { run_006 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> run_007 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { run_007 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+}
