@@ -5,11 +5,15 @@ class Player:
     def __init__(self, base, anim_path: dict):
         self.base = base
 
-        self.idle_sprite = base.loader.loadModel(str(anim_path["idle"]))
+        # Load the idle animation.
+        # self.idle_anim = base.loader.loadModel(str(anim_path["idle"]))
+        # self.idle_anim.reparentTo(base.render)
+        # self.idle_anim.setPos(0, 0, 0.75)
 
-        self.idle_sprite.reparentTo(base.render)
-
-        self.idle_sprite.setPos(0, 0, 0.75)
+        # Load the run animation.
+        self.run_anim = base.loader.loadModel(str(anim_path["run"]))
+        self.run_anim.reparentTo(base.render)
+        self.run_anim.setPos(0, 0, 0.75)
 
     def update(self, task):
         dt = globalClock.getDt()

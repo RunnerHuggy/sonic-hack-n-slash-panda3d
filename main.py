@@ -7,6 +7,7 @@ if __name__ == "__main__":
         "src/assets/3d-objects/floor.glb",
         {
             "idle": "src/assets/sprites/sonic/idle/sonic_idle.egg",
+            "run": "src/assets/sprites/sonic/run/sonic_run.egg",
         }
     )
     game.run()
