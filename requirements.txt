@@ -1,0 +1,8 @@
+panda3d
+panda3d-gltf
+panda3d-character-controller
+panda3d-cli
+panda3d-imgui
+panda3d-blend2bam
+panda3d-sprite
+panda3d-viewer
