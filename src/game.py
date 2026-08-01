@@ -6,7 +6,7 @@ class SonicHackNSlashPanda3D(ShowBase):
     """
     The core of the game
     """
-    def __init__(self, scene_path: str, idle_path: str):
+    def __init__(self, scene_path: str, sonic_anim_path: dict):
         """
         Initializes the game.
 
@@ -20,5 +20,4 @@ class SonicHackNSlashPanda3D(ShowBase):
 
         self.scene.setPos(-8, 42, 0)
 
-        self.sonic = self.loader.loadModel(idle_path)
-        self.sonic.reparentTo(self.render)
+        self.player = Player(self, sonic_anim_path)

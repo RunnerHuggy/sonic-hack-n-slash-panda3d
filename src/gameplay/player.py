@@ -1,9 +1,17 @@
 from direct.showbase.ShowBaseGlobal import globalClock
-from pathlib import Path
-from panda3d.core import CardMaker
+
 
 class Player:
-    def __init__(self, base):
+    def __init__(self, base, anim_path: dict):
         self.base = base
 
-        
+        self.idle_sprite = base.loader.loadModel(str(anim_path["idle"]))
+
+        self.idle_sprite.reparentTo(base.render)
+
+        self.idle_sprite.setPos(0, 0, 0.75)
+
+    def update(self, task):
+        dt = globalClock.getDt()
+
+        return task.cont
