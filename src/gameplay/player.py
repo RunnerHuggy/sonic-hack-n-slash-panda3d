@@ -5,13 +5,13 @@ class Player:
         self.base = base
 
         # Load the idle animation.
-        self.idle_anim = base.loader.loadModel(str(anim_path["idle"]))
+        self.idle_anim = base.loader.loadModel(str(anim_path["idle_right"]))
         self.idle_anim.reparentTo(base.render)
         self.idle_anim.setPos(0, 0, 0.75)
         self.idle_seq = self._get_sequence_node(self.idle_anim)
 
         # Load the run animation.
-        self.run_anim = base.loader.loadModel(str(anim_path["run"]))
+        self.run_anim = base.loader.loadModel(str(anim_path["run_right"]))
         self.run_anim.reparentTo(base.render)
         self.run_anim.setPos(0, 0, 0.75)
         self.run_seq = self._get_sequence_node(self.run_anim)
