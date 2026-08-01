@@ -6,3 +6,11 @@ panda3d-imgui
 panda3d-blend2bam
 panda3d-sprite
 panda3d-viewer
+panda3d-complexpbr
+panda3d-animalese
+panda3d-config
+panda3d-pman
+panda3d-appimage
+panda3d-assetcoop
+panda3d-astron
+panda3d-bbmodel2bam
