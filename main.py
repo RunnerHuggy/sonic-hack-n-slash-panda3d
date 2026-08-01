@@ -1,10 +1,15 @@
-from direct.showbase.ShowBase import ShowBase
-
-class SonicHackNSlashPanda3D(ShowBase):
-    def __init__(self):
-        ShowBase.__init__(self)
+# Simplifying the initializing
+from src.game import SonicHackNSlashPanda3D
 
 
 if __name__ == "__main__":
-    game : SonicHackNSlashPanda3D = SonicHackNSlashPanda3D()
+    game : SonicHackNSlashPanda3D = SonicHackNSlashPanda3D(
+        "src/assets/3d-objects/floor.glb",
+        {
+            "idle_right": "src/assets/sprites/sonic/idle/right/sonic_idle.egg",
+            "run_right": "src/assets/sprites/sonic/run/right/sonic_run.egg",
+            "idle_left": "src/assets/sprites/sonic/idle/left/sonic_idle.egg",
+            "run_left": "src/assets/sprites/sonic/run/left/sonic_run.egg"
+        }
+    )
     game.run()
