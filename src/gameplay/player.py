@@ -9,25 +9,25 @@ class Player:
         # Right
         self.idle_anim_right = base.loader.loadModel(str(anim_path["idle_right"]))
         self.idle_anim_right.reparentTo(base.render)
-        self.idle_anim_right.setPos(0, 0, 0.75)
+        self.idle_anim_right.setPos(0, 0, 0.1)
         self.idle_seq_right = self._get_sequence_node(self.idle_anim_right)
 
         # Left
         self.idle_anim_left = base.loader.loadModel(str(anim_path["idle_left"]))
         self.idle_anim_left.reparentTo(base.render)
-        self.idle_anim_left.setPos(0, 0, 0.75)
+        self.idle_anim_left.setPos(0, 0, 0.1)
         self.idle_seq_left = self._get_sequence_node(self.idle_anim_left)
 
         # Right
         self.run_anim_right = base.loader.loadModel(str(anim_path["run_right"]))
         self.run_anim_right.reparentTo(base.render)
-        self.run_anim_right.setPos(0, 0, 0.75)
+        self.run_anim_right.setPos(0, 0, 0.1)
         self.run_seq_right = self._get_sequence_node(self.run_anim_right)
 
         # Left
         self.run_anim_left = base.loader.loadModel(str(anim_path["run_left"]))
         self.run_anim_left.reparentTo(base.render)
-        self.run_anim_left.setPos(0, 0, 0.75)
+        self.run_anim_left.setPos(0, 0, 0.1)
         self.run_seq_left = self._get_sequence_node(self.run_anim_left)
 
         self.idle_anim_right_show()
